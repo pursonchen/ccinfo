@@ -10,6 +10,7 @@ class Crawler
 {
     public function DigFeixiaohao($coinCode)
     {
+        if($coinCode !== ''){
        //采集目标
        $url = 'https://m.feixiaohao.com/currencies/'.$coincode;
        // 图表api http://mapi.feixiaohao.com/api/coin/coinhisdata/?coinCode=eos&beginTime=1514739661000&&endTime=1514749661000
@@ -41,7 +42,13 @@ class Crawler
             //发行量
             'distribution' => array('.mainInfo2>.leftside>.val:eq(1)','text')
        );
-    
+
+       $ql = QueryList::get($url)->rules($rules)->query()->getData();
+       
+       return json_decode($data->all(), true); 
+    }
+    else
+        return ;
 
     }
 }

@@ -1,8 +1,7 @@
-<?
+<?php
 
 namespace App\Handlers;
 
-require 'QueryList/vendor/autoload.php';
 
 use QL\QueryList;
 
@@ -12,7 +11,7 @@ class Crawler
     {
         if($coinCode !== ''){
        //采集目标
-       $url = 'https://m.feixiaohao.com/currencies/'.$coincode;
+       $url = 'https://m.feixiaohao.com/currencies/'.$coinCode;
        // 图表api http://mapi.feixiaohao.com/api/coin/coinhisdata/?coinCode=eos&beginTime=1514739661000&&endTime=1514749661000
        
        //编写采集规则
@@ -22,7 +21,7 @@ class Crawler
             // 币种代码
             'coinCode' => array('.boxTit.coin-tit>h1','text'),
             // 币价
-            'coinPrice' => array('.price1>.main','text','-i .range-info'),
+            'coinPrice' => array('.price1>.main','text','-i -.range-info'),
             //币价日同比
             'range' => array('.price1>.main>.range-info>text-red','html'),
             // 币价对美元
@@ -44,8 +43,8 @@ class Crawler
        );
 
        $ql = QueryList::get($url)->rules($rules)->query()->getData();
-       
-       return json_decode($data->all(), true); 
+
+       return json_decode($ql->all(), true); 
     }
     else
         return ;

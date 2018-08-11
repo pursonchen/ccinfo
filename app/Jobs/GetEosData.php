@@ -48,7 +48,7 @@ class GetEosData implements ShouldQueue
         //缓存EOS基础信息
         Redis::set('basicInfo', json_encode($basicInfo[0],true));
         
-        // 请求EOS价格图表
+        //请求EOS价格图表
         $priceChart = app(CrawlerChart::class)->DigFeixiaohaoChart($this->coinCode, $this -> beginTime,$this -> endTime);
         
         //缓存EOS图表

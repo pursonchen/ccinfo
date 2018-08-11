@@ -15,14 +15,11 @@ use Illuminate\Http\Request;
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', function($api) {
-    $api->get('version', function() {
-        return response('this is version v1');
-    });
+$api->version('v1', [
+    'namespace' => 'App\Http\Controllers\Api'
+], function($api) {
+    // 获取基础数据
+    $api->get('eosinfo', 'InfoAndChartController@show')
+        ->name('api.infoAndChartController.show');
 });
 
-$api->version('v2', function($api) {
-    $api->get('version', function() {
-        return response('this is version v2');
-    });
-});

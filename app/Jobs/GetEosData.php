@@ -69,7 +69,7 @@ class GetEosData implements ShouldQueue
         //缓存EOS图表
         Redis::set('priceChart', json_encode($priceChart,true));
         
-        return Redis::get('basicInfo');
+       
         
     }
 }

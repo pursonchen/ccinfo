@@ -19,7 +19,7 @@ class Crawler
             //币种名称
             'coinName' => array('.boxTit.coin-tit>h1','text','-small'),
             // 币种代码
-            'coinCode' => array('.boxTit.coin-tit>h1','text'),
+            'coinCode' => array('.boxTit.coin-tit>h1>small','text'),
             // 币价
             'coinPrice' => array('.price1>.main','text','-i -.range-info'),
             //币价日同比
@@ -42,9 +42,9 @@ class Crawler
             'distribution' => array('.mainInfo2>.leftside>.val:eq(1)','text')
        );
 
-       $ql = QueryList::get($url)->rules($rules)->query()->getData();
-
-       return json_decode($ql->all(), true); 
+         $ql = QueryList::get($url)->rules($rules)->query()->getData();
+       
+       return   $ql->all();
     }
     else
         return ;

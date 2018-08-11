@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12b8471ad749191377a0f870ec861532",
+    "content-hash": "6d3b479275a9ca9bafed6a9504472461",
     "packages": [
+        {
+            "name": "alexmasterov/msgpack",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AlexMasterov/msgpack.php.git",
+                "reference": "620c43be2b2131623ff3e2cb5be5c9e43468f076"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AlexMasterov/msgpack.php/zipball/620c43be2b2131623ff3e2cb5be5c9e43468f076",
+                "reference": "620c43be2b2131623ff3e2cb5be5c9e43468f076",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "7.2 - 7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "MessagePack\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "/tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Masterov",
+                    "email": "alex.masterow@gmail.com"
+                }
+            ],
+            "description": "A pure and efficient MessagePack serialization library",
+            "homepage": "https://github.com/AlexMasterov/msgpack.php",
+            "keywords": [
+                "messagepack",
+                "msgpack",
+                "pure"
+            ],
+            "time": "2018-03-11T23:57:31+00:00"
+        },
         {
             "name": "dingo/api",
             "version": "v2.0.0-alpha2",

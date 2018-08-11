@@ -11,6 +11,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use App\Handlers\Crawler;
 use App\Handlers\CrawlerChart;
 
+use Redis;
+
 
 class GetEosData implements ShouldQueue
 {
@@ -42,9 +44,16 @@ class GetEosData implements ShouldQueue
     {
         //请求EOS价格等基础数据 $c[0]['coinName']
         $basicInfo = app(Crawler::class)->DigFeixiaohao($this->coinCode);
+        
+        //缓存EOS基础信息
+        Redis::set('basicInfo', json_encode($basicInfo[0],true));
+        
         // 请求EOS价格图表
         $priceChart = app(CrawlerChart::class)->DigFeixiaohaoChart($this->coinCode, $this -> beginTime,$this -> endTime);
-
+        
+        //缓存EOS图表
+        Redis::set('priceChart', json_encode($priceChart,true));
+     
         
     }
 }

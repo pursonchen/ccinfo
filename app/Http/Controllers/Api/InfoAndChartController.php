@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Jobs\GetEosData;
 
+use Redis;
+
 class InfoAndChartController extends Controller
 {
     public function show()
@@ -15,6 +17,5 @@ class InfoAndChartController extends Controller
 
          dispatch(new GetEosData($beginTime, $endTime));
 
-         
     }
 }

@@ -19,6 +19,21 @@ class GetEosData implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $coinCode, $beginTime, $endTime;
+    
+    /**
+     * 任务最大尝试次数。
+     *
+     * @var int
+     */
+    public $tries = 5;
+
+    /**
+     * 任务运行的超时时间。
+     *
+     * @var int
+     */
+    public $timeout = 120;
+
 
     /**
      * Create a new job instance.
@@ -53,7 +68,8 @@ class GetEosData implements ShouldQueue
         
         //缓存EOS图表
         Redis::set('priceChart', json_encode($priceChart,true));
-     
+        
+        return Redis::get('basicInfo');
         
     }
 }

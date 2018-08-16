@@ -23,7 +23,7 @@ class Crawler
             // 币价
             'coinPrice' => array('.price1>.main','text','-i -.range-info'),
             //币价日同比
-            'range' => array('.price1>.main>.range-info>text-red','text'),
+            'range' => array('.price1>.main>.range-info>span','html'),
             // 币价对美元
             'againstUSD' => array('.lowheight>div:eq(0)>span','text'),
             // 24小时最高价
